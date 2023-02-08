@@ -1,10 +1,26 @@
 import './ShopEdit.css';
+import {useState} from 'react';
 
-function ShopEdit(){
+function ShopEdit({item}){
+    const [name, setName] = useState(item.name);
+
+    const handleNameChange = (event) => {
+        setName(event.target.value);
+    };
+
+    //keeps track of save button
+    const handleSaveName = (event) => {
+        event.preventDefault();
+    };
+
     return (
-        <div>
-            ShopEdit
-        </div>
+        <form className='shop-edit' onSubmit={handleSaveName}>
+            <label>Grocery Name</label>
+            <input className='input' value={name} onChange={handleNameChange}/>
+            <button className='button is-primary' onClick={handleNameChange}>
+                Save
+            </button>
+        </form>
     )
 }
 
