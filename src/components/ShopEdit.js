@@ -1,7 +1,7 @@
 import './ShopEdit.css';
 import {useState} from 'react';
 
-function ShopEdit({item, onEdit}){
+function ShopEdit({item, onSubmit}){
     const [name, setName] = useState(item.name);
 
     const handleNameChange = (event) => {
@@ -11,8 +11,7 @@ function ShopEdit({item, onEdit}){
     //keeps track of save button
     const handleSaveName = (event) => {
         event.preventDefault();
-        console.log(name);
-        onEdit(item.id, name);  //uses name piece of state that user is updating
+        onSubmit(item.id, name);
     };
 
     return (

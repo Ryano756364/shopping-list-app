@@ -4,6 +4,11 @@ import ShopEdit from './ShopEdit';
 
 function ShopShow({item, onDelete, onEdit}){
     const [edit, setEdit] = useState(false);
+        
+    const handleSubmit = (id, newName) => {
+        setEdit(false);
+        onEdit(id, newName);
+    }
 
     const handleEditClick = () => {
         setEdit(!edit);
@@ -15,7 +20,7 @@ function ShopShow({item, onDelete, onEdit}){
 
     let content = <h3>{item.name}</h3>;
     if (edit) {
-        content = <ShopEdit item={item} onEdit={onEdit}/>;
+        content = <ShopEdit item={item} onSubmit={handleSubmit}/>;
     }
     
     return (
