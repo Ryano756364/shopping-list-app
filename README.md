@@ -32,4 +32,6 @@
 
 ` Rest Client Extension `
 
-` `
+` Axios `
+
+` useEffect and setup of initial state upon app initialization `

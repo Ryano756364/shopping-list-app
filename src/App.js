@@ -1,10 +1,22 @@
-import {useState} from 'react';
+import axios from 'axios';
+import {useState, useEffect} from 'react';
 import './App.css';
 import ShopCreate from './components/ShopCreate';
 import ShopList from './components/ShopList';
 
 function App(){
   const [shop, setShop] = useState([]);
+
+  const fetchItems = async () => {
+    const response = await axios.get('http://localhost:3001/items');
+
+    //will now use reponse to update state data
+    setShop(response.data);
+  };
+
+  useEffect(() => { //called upon first site render
+    fetchItems();
+  }, []); //using empty array so useEffect is never called again
 
   const editItemById = (id, newName) => {
     //must find the shop object with like id and adjust it
@@ -29,11 +41,13 @@ function App(){
     setShop(updatedShop);  //checks if state is different and will re-render if so
   };
 
-  const onCreateShop = (item) => {
+  const onCreateShop = async (item) => {
+    const response = await axios.post('http://localhost:3001/items', {
+      name: item
+    })
     const updatedShop = [
       ...shop,
-      {id: Math.round(Math.random() * 10000), //Not a guarantee there won't be duplicates (normally bad)
-      name: item} //rarely does React assign id; normally server side
+      response.data  //no longer manually adding data; but data returned to us 
     ];
     setShop(updatedShop);
   };
