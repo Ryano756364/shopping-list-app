@@ -2,7 +2,7 @@ import './ShopShow.css';
 import {useState} from 'react';
 import ShopEdit from './ShopEdit';
 
-function ShopShow({item, onDelete}){
+function ShopShow({item, onDelete, onEdit}){
     const [edit, setEdit] = useState(false);
 
     const handleEditClick = () => {
@@ -15,7 +15,7 @@ function ShopShow({item, onDelete}){
 
     let content = <h3>{item.name}</h3>;
     if (edit) {
-        content = <ShopEdit item={item}/>;
+        content = <ShopEdit item={item} onEdit={onEdit}/>;
     }
     
     return (

@@ -4,9 +4,22 @@ import ShopCreate from './components/ShopCreate';
 import ShopList from './components/ShopList';
 
 function App(){
-  const [shop, setShop] = useState([]); //empty array to build shopping list
+  const [shop, setShop] = useState([]);
 
-  //Component to delete shopping list item
+  const editItemById = (id, newName) => {
+    //must find the shop object with like id and adjust it
+    //use map for this, to find it, copy over properties and put new title in
+    const itemObject = shop.map((item) => {
+      if(item.id === id) {
+        return {...item, name: newName};  //will end up returning truthy after copying over item properties from original object
+      }
+
+      return item;  //ID we are not looking for gets returned back here without touching it
+    });
+
+    setShop(itemObject);
+  };
+
   const deleteItemById = (id) => {
     //Use filter function to return a new copy of the array minus the id we don't object to equal to
     const updatedShop = shop.filter((item) => {
@@ -27,7 +40,7 @@ function App(){
   
   return (
     <div className='app'>
-      <ShopList shop={shop} onDelete={deleteItemById}/>
+      <ShopList onEdit={editItemById} shop={shop} onDelete={deleteItemById}/>
       <ShopCreate onCreate={onCreateShop}/>
     </div>
   )
