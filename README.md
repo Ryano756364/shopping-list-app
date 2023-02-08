@@ -22,14 +22,14 @@
 
 ` String interpolation `
 
-` `
+` Create a new server + database API and how it works `
 
-` `
+` Grab list of items from server upon startup `
 
-` `
+` CRUD items on database then update local state `
 
-` `
+` Standalone API Client to test with - one already built into VSCode `
 
-` `
+` Rest Client Extension `
 
 ` `
