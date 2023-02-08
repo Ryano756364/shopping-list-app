@@ -3,9 +3,11 @@
 ## Built using React
 ` Instructions `
 
-`  `
+` Enter a an item to a shopping list then press enter `
 
-`  `
+` Adjust name of item with edit icon `
+
+` Note: photo generated will be random for developmental purposes `
 
 ---
 
