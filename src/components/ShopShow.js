@@ -25,7 +25,7 @@ function ShopShow({item, onDelete, onEdit}){
     
     return (
         <div className='shop-show'>
-
+            <img src={`https://picsum.photos/seed/${item.id}/200/125`} alt="random image"/>
             <div>{content}</div>
 
             <div className='actions'>

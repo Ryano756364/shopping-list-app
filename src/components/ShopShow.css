@@ -29,3 +29,7 @@
   right: 82px;
   cursor: pointer;
 }
+
+img{
+  border-radius: .4rem;
+}

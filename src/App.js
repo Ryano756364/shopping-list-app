@@ -40,6 +40,8 @@ function App(){
   
   return (
     <div className='app'>
+      <h1>Grocery Shopping List</h1>
+      <h2>...with random image generator</h2>
       <ShopList onEdit={editItemById} shop={shop} onDelete={deleteItemById}/>
       <ShopCreate onCreate={onCreateShop}/>
     </div>
