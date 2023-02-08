@@ -11,14 +11,15 @@ function ShopEdit({item, onEdit}){
     //keeps track of save button
     const handleSaveName = (event) => {
         event.preventDefault();
-        onEdit(name.id, name);  //uses name piece of state that user is updating
+        console.log(name);
+        onEdit(item.id, name);  //uses name piece of state that user is updating
     };
 
     return (
         <form className='shop-edit' onSubmit={handleSaveName} >
             <label>Grocery Name</label>
             <input className='input' value={name} onChange={handleNameChange}/>
-            <button className='button is-primary' onClick={handleNameChange}>
+            <button className='button is-primary'>
                 Save
             </button>
         </form>
