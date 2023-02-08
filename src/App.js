@@ -18,12 +18,16 @@ function App(){
     fetchItems();
   }, []); //using empty array so useEffect is never called again
 
-  const editItemById = (id, newName) => {
+  const editItemById = async (id, newName) => {
+    const response = await axios.put(`http://localhost:3001/items/${id}`, {
+      name: newName
+    });
+
     //must find the shop object with like id and adjust it
     //use map for this, to find it, copy over properties and put new title in
     const itemObject = shop.map((item) => {
       if(item.id === id) {
-        return {...item, name: newName};  //will end up returning truthy after copying over item properties from original object
+        return {...item, ...response.data};  //will end up returning truthy after copying over item properties from original object
       }
 
       return item;  //ID we are not looking for gets returned back here without touching it
@@ -32,7 +36,9 @@ function App(){
     setShop(itemObject);
   };
 
-  const deleteItemById = (id) => {
+  const deleteItemById = async (id) => {
+    await axios.delete(`http://localhost:3001/items/${id}`);
+    
     //Use filter function to return a new copy of the array minus the id we don't object to equal to
     const updatedShop = shop.filter((item) => {
       return item.id !== id;
