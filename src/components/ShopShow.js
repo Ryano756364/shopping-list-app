@@ -1,9 +1,11 @@
 import './ShopShow.css'
 
-function ShopShow(){
-    <div>
-        ShopShow
-    </div>
+function ShopShow({item}){
+    return (
+        <div className='shop-show'>
+            {item.name}
+        </div>
+    )
 }
 
 export default ShopShow;

@@ -1,9 +1,11 @@
 import './ShopEdit.css';
 
 function ShopEdit(){
-    <div>
-        ShopEdit
-    </div>
+    return (
+        <div>
+            ShopEdit
+        </div>
+    )
 }
 
 export default ShopEdit;

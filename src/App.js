@@ -1,16 +1,23 @@
 import {useState} from 'react';
 import './App.css';
 import ShopCreate from './components/ShopCreate';
+import ShopList from './components/ShopList';
 
 function App(){
-  const [shop, setShop] = useState([]); //Setting up empty array so we can build shopping list
+  const [shop, setShop] = useState([]); //empty array to build shopping list
 
   const onCreateShop = (item) => {
-    console.log('Add item with name: ', item);
+    const updatedShop = [
+      ...shop,
+      {id: Math.round(Math.random() * 10000), //Not a guarantee there won't be duplicates (normally bad)
+      name: item} //rarely does React assign id; normally server side
+    ];
+    setShop(updatedShop);
   };
   
   return (
-    <div>
+    <div className='app'>
+      <ShopList shop={shop}/>
       <ShopCreate onCreate={onCreateShop}/>
     </div>
   )
