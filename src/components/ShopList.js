@@ -1,9 +1,9 @@
 import './ShopList.css';
 import ShopShow from './ShopShow';
 
-function ShopList({shop}){
+function ShopList({shop, onDelete}){
     const renderedItems = shop.map((item) => {
-        return <ShopShow key={item.id} item={item}/>;
+        return <ShopShow onDelete={onDelete} key={item.id} item={item}/>;
     });
 
     return (

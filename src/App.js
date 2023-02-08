@@ -6,6 +6,16 @@ import ShopList from './components/ShopList';
 function App(){
   const [shop, setShop] = useState([]); //empty array to build shopping list
 
+  //Component to delete shopping list item
+  const deleteItemById = (id) => {
+    //Use filter function to return a new copy of the array minus the id we don't object to equal to
+    const updatedShop = shop.filter((item) => {
+      return item.id !== id;
+    });
+
+    setShop(updatedShop);  //checks if state is different and will re-render if so
+  };
+
   const onCreateShop = (item) => {
     const updatedShop = [
       ...shop,
@@ -17,7 +27,7 @@ function App(){
   
   return (
     <div className='app'>
-      <ShopList shop={shop}/>
+      <ShopList shop={shop} onDelete={deleteItemById}/>
       <ShopCreate onCreate={onCreateShop}/>
     </div>
   )
